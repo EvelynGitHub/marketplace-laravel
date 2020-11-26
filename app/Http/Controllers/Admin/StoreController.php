@@ -26,7 +26,7 @@ class StoreController extends Controller
 
         $data = $request->all();
 
-        $user = \App\User::find($data['user']);
+        $user = auth()->user(); //\App\User::find($data['user']);
         $store = $user->store()->create($data);
 
 
