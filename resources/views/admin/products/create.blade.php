@@ -9,36 +9,57 @@
 
     <div class="form-group" class="form-group">
         <label for="name">Nome do Produto</label>
-        <input type="text" name="name" class="form-control">
+        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
+
+        @error('name')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+
     </div>
 
     <div class="form-group">
         <label for="description">Descrição</label>
-        <input type="text" name="description" class="form-control">
+        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
+
+        @error('description')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+
     </div>
 
     <div class="form-group">
-        <label for="phone">Conteúdo</label>
-        <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+        <label for="body">Conteúdo</label>
+        <textarea name="body" id="" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror">
+        {{old('body')}}
+        </textarea>
+
+        @error('body')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+
     </div>
 
     <div class="form-group">
         <label for="price">Preço</label>
-        <input type="text" name="price" class="form-control">
+        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{old('price')}}">
+
+        @error('price')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+
     </div>
 
     <div class="form-group">
         <label for="slug">Slug</label>
         <input type="text" name="slug" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label for="store">Loja</label>
-        <select name="store" class="form-control">
-            @foreach($stores as $store)
-            <option value="{{$store->id}}">{{$store->name}}</option>
-            @endforeach
-        </select>
     </div>
 
     <div class="form-group">

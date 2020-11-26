@@ -9,11 +9,17 @@ use App\Http\Requests\StoreRequest;
 
 class StoreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('user.has.store')->only(['create', 'store']);
+    }
+
     public function index()
     {
-        $stores = \App\Store::paginate(10);
+        $store = auth()->user()->store; // \App\Store::paginate(10);
 
-        return view('admin.stores.index', compact('stores'));
+        return view('admin.stores.index', compact('store'));
     }
 
     public function create()
