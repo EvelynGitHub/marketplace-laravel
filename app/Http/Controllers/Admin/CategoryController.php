@@ -5,8 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Category;
+use App\Http\Requests\CategoryRequest;
+
 class CategoryController extends Controller
 {
+
+    private $category;
+
+    public function __construct(Category $category)
+    {
+        $this->category = $category;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = $this->category->paginate(10);
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -33,9 +46,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $store = $this->category->create($data);
+
+        flash('Categoria Criada com Sucesso!')->success();
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -57,7 +75,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->category->find($id);
+
+        // dd($category);
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -67,9 +89,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $store = $this->category->find($id);
+
+        $store->update($data);
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -80,6 +108,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->category->destroy($id);
+
+        flash('Categoria Removida com Sucesso!')->success();
+        return redirect()->route('admin.categories.index');
     }
 }
