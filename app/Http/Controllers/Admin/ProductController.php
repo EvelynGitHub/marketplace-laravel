@@ -50,7 +50,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $data = $request->all();
 
@@ -134,18 +134,5 @@ class ProductController extends Controller
 
         flash('Produto Removido com Sucesso!')->success();
         return redirect()->route('admin.products.index');
-    }
-
-    private function imageUpload(Request $request, $imageColumn)
-    {
-        $images = $request->file('photos');
-
-        $uploadedImages = [];
-
-        foreach ($images as $image) {
-            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
-        }
-
-        return $uploadedImages;
     }
 }
