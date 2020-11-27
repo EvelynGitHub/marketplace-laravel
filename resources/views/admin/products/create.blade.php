@@ -21,8 +21,7 @@
 
     <div class="form-group">
         <label for="description">Descrição</label>
-        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror"
-            value="{{old('description')}}">
+        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
 
         @error('description')
         <div class="invalid-feedback">
@@ -48,8 +47,7 @@
 
     <div class="form-group">
         <label for="price">Preço</label>
-        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror"
-            value="{{old('price')}}">
+        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{old('price')}}">
 
         @error('price')
         <div class="invalid-feedback">
@@ -70,7 +68,15 @@
 
     <div class="form-group">
         <label>Fotos do Produto</label>
-        <input type="file" name="photos[]" class="form-control" multiple>
+        <input type="file" name="photos[]" class="form-control  @error('photos') is-invalid @enderror " multiple>
+
+        @error('photos')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+
+
     </div>
 
     <div class="form-group">
