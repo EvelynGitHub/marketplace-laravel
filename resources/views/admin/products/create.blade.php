@@ -4,7 +4,7 @@
 
 <h1>Criar Produto</h1>
 
-<form action="{{route('admin.products.store')}}" method="post">
+<form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group" class="form-group">
@@ -21,7 +21,8 @@
 
     <div class="form-group">
         <label for="description">Descrição</label>
-        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
+        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror"
+            value="{{old('description')}}">
 
         @error('description')
         <div class="invalid-feedback">
@@ -47,7 +48,8 @@
 
     <div class="form-group">
         <label for="price">Preço</label>
-        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{old('price')}}">
+        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror"
+            value="{{old('price')}}">
 
         @error('price')
         <div class="invalid-feedback">
@@ -67,6 +69,11 @@
     </div>
 
     <div class="form-group">
+        <label>Fotos do Produto</label>
+        <input type="file" name="photos[]" class="form-control" multiple>
+    </div>
+
+    <div class="form-group">
         <label for="slug">Slug</label>
         <input type="text" name="slug" class="form-control">
     </div>
@@ -75,4 +82,6 @@
         <button type=" submit" class="btn btn-lg btn-success">Criar Produto</button>
     </div>
 </form>
+
+
 @endsection
