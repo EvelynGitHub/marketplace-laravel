@@ -28,6 +28,17 @@
         <input type="text" name="price" class="form-control" value="{{$product->price}}">
     </div>
 
+    <div class="form-group">
+        <label>Categorias</label>
+        <select name="categories[]" id="" class="form-control" multiple>
+            @foreach($categories as $category)
+            <option value="{{$category->id}}" @if($product->categories->contains($category)) selected @endif>
+                {{$category->name}}
+            </option>
+            @endforeach
+        </select>
+    </div>
+
 
     <div class="form-group">
         <label for="slug">Slug</label>
