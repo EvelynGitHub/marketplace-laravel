@@ -24,7 +24,11 @@
 
                 @foreach($cart as $c)
                 <tr>
-                    <td>{{$c['name']}}</td>
+                    <td>
+                        <a href="{{route('product.single', ['slug'=> $c['slug']])}}" class="btn">
+                            {{$c['name']}}
+                        </a>
+                    </td>
                     <td>R${{$c['price']}}</td>
                     <td>{{$c['amount']}}</td>
                     @php
