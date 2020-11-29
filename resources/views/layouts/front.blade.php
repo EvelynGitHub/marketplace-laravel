@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -11,9 +12,11 @@
         .front.row {
             margin-bottom: 40px;
         }
-
     </style>
+
+    @yield('stylesheets')
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 40px;">
 
@@ -77,5 +80,8 @@
         @include('flash::message')
         @yield('content')
     </div>
+
+    @yield('scripts')
 </body>
+
 </html>
