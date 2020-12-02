@@ -26,4 +26,15 @@ class NotificationController extends Controller
 
         return redirect()->back();
     }
+
+
+    function read($notificationId)
+    {
+        $notification = auth()->user()->notifications()->find($notificationId);
+        $notification->markAsRead();
+
+        flash("Notificação lida com sucesso!")->success();
+
+        return redirect()->back();
+    }
 }

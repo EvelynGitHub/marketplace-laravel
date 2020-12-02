@@ -38,8 +38,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
 
-        Route::get('notifications', 'NotificationController@notifications')->name('notification.index');
+        Route::get('notifications', 'NotificationController@notifications')->name('notifications.index');
         Route::get('notifications/read-all', 'NotificationController@readAll')->name('notifications.read.all');
+        Route::get('notifications/read/{notification}', 'NotificationController@read')->name('notifications.read');
+
         // Route::prefix('stores')->name('stores.')->group(function () {
 
         //     Route::get('/', 'StoreController@index')->name('index');
