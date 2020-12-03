@@ -62,6 +62,8 @@ class ProductController extends Controller
         $data = $request->all();
         $categories = $request->get('categories', null);
 
+        $data['price'] = formatPriceToDatabase($data['price']);
+
         $store = auth()->user()->store; // $store = \App\Store::find($data['store']);
         $product = $store->products()->create($data);
 
@@ -114,6 +116,8 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $categories = $request->get('categories', null);
+
+        $data['price'] = formatPriceToDatabase($data['price']);
 
         $product = $this->product->find($id);
         $product->update($data);
