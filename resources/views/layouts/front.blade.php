@@ -56,6 +56,16 @@
 
                     </li>
                     @endauth
+
+                    @if(!auth()->user())
+                    <li class="nav-item">
+                        <a href="{{route('login')}}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('register')}}" class="nav-link">Registar</a>
+                    </li>
+                    @endif
+
                     <li class="nav-item">
                         <a href="{{route('cart.index')}}" class="nav-link">
                             @if(session()->has('cart'))
