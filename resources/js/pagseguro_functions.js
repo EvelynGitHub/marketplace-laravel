@@ -59,3 +59,43 @@ function drawSelectInstallments(installments) {
 
     return select;
 }
+
+function showErrorMessages(message) {
+    return `
+        <div class="alert alert-danger">${message}</div>
+    `;
+}
+
+function errorsMapPagseguroJs(code) {
+
+    switch (code) {
+        case "10000":
+            return "Bandeira do cartão inválida!"
+            break;
+
+        case "10001":
+            return "Número do cartão com tamanho inválido!"
+            break;
+        // case "10002":
+        case "30405":
+            return "Data com formato inválida!"
+            break;
+
+        case "10003":
+            return "Código de segurança inválida!"
+            break;
+
+        case "10004":
+            return "Código de segurança obrigatório!"
+            break;
+
+        case "10006":
+            return "Tamanho de código de segurança inválido!"
+            break;
+
+        default:
+            return "Houve um erro na validação do seu cartão de crédito!"
+            break;
+    }
+
+}

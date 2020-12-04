@@ -7,7 +7,13 @@
 @section('content')
 
 <div class="container">
+
     <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12 msg">
+
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
