@@ -23,6 +23,17 @@ Entretanto, ao se iniciar um projeto em Laravel, a quantidade de arquivos e past
 Graças as pontos que citei acima, a navegação entre os arquivos/pastas mais usados pode se tornar uma coisa complicada.
 
 
+## Sobre o Projeto 
+
+Este projeto consiste em um marketeplace, no qual é possivel se cadastrar dois tipos de usuarios:
+- Usuário Comum:
+    - Pode adicionar produtos no carrinho
+    - Exibir produtos de apenas uma categoria
+    - Exibir produtos de apenas uma loja
+    - Comprar os produtos do carrinho via PagSeguro
+- Usuário Mercado:
+    - Pode cadastrar uma loja(Descriação, logo, etc)
+    - Pode cadastrar/editar/remover produtos.
 
 
 ## Contributing
